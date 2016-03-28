@@ -1,3 +1,5 @@
+##Fork hecho desde https://github.com/tiltshiftfocus/cordova-plugin-cache
+
 # Cache Clear
 
 This is a WebView cache plugin for Cordova 5.4.0 supporting Android (>=2.3.3) and iOS(>=6.0)
@@ -6,14 +8,14 @@ It allows the app to use javascript to initiate a cordova webview cache clear
 There are two methods:
 
 `clear(successCallback, errorCallback)`
-`cleartemp()`
+`cleartemp(successCallback, errorCallback)`
 
 #### Manual Installation
 
 You may use `cordova-cli` as follows:
 
 ```shell
-cordova plugin add https://github.com/andxyz/cordova-plugin-cache.git
+cordova plugin add https://github.com/kalber/cordova-plugin-cache.git
 ```
 
 #### Usage
@@ -31,7 +33,7 @@ function onDeviceReady() {
   }
 
   window.cache.clear(success, error);
-  window.cache.cleartemp();
+  window.cache.cleartemp(success, error);
 }
 
 ```
