@@ -46,14 +46,12 @@ public class Cache extends CordovaPlugin {
 
 	@Override
 	public boolean execute (String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		/*try
-		{
-		*/
+		
+		this.callbackContext = callbackContext;
+		final Cache self = this;
 		if ( action.equals("clear") ) {
 			Log.v(LOG_TAG, "Cordova Android Cache.clear() called.");
-			this.callbackContext = callbackContext;
 
-			final Cache self = this;
 			cordova.getActivity().runOnUiThread( new Runnable() {
 				public void run() {
 					try {
@@ -79,17 +77,36 @@ public class Cache extends CordovaPlugin {
 				}
 			});
 			return true;
+		} else if(action.equals("cleartemp")) {
+			Log.v(LOG_TAG, "Cordova Android Cache.cleartemp() called.");
+
+			cordova.getActivity().runOnUiThread( new Runnable() {
+				public void run() {
+					try {
+						// clear the cache
+						self.webView.clearCache(true);
+
+						// clear the data
+						Cache.deleteDir(this.cordova.getActivity().getCacheDir());
+
+						// send success result to cordova
+						PluginResult result = new PluginResult(PluginResult.Status.OK);
+						result.setKeepCallback(false);
+						self.callbackContext.sendPluginResult(result);
+					} catch ( Exception e ) {
+						String msg = "Error while clearing webview cache.";
+						Log.e(LOG_TAG, msg );
+
+						// return error answer to cordova
+						PluginResult result = new PluginResult(PluginResult.Status.ERROR, msg);
+						result.setKeepCallback(false);
+						self.callbackContext.sendPluginResult(result);
+					}
+				}
+			});
+			return true;
 		}
 		return false;
-		/*
-		}
-		catch (JSONException e)
-		{
-		// TODO: signal JSON problem to JS
-		//callbackContext.error("Problem with JSON");
-		return false;
-		}
-		*/
 	}
 
 	// http://www.hrupin.com/2011/11/how-to-clear-user-data-in-your-android-application-programmatically
