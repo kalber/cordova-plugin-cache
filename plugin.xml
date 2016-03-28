@@ -5,10 +5,10 @@
     version="1.0.5">
 
     <name>Clear Cache</name>
-    <repo>https://github.com/andxyz/cordova-plugin-cache.git</repo>
+    <repo>https://github.com/kalber/cordova-plugin-cache.git</repo>
     <keywords>webview,cache,clear,android,ios</keywords>
     <license>MIT</license>
-    <author>andxyz</author>
+    <author>kalber</author>
     <description>
       &lt;p&gt;This is a WebView cache plugin for Cordova 5.4.0 supporting Android (>=2.3.3) and iOS(>=6.0). It allows to clear the cordova webview cache.&lt;/p&gt;
     </description>
