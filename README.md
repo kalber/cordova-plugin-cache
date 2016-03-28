@@ -8,7 +8,7 @@ It allows the app to use javascript to initiate a cordova webview cache clear
 There are two methods:
 
 `clear(successCallback, errorCallback)`
-`cleartemp()`
+`cleartemp(successCallback, errorCallback)`
 
 #### Manual Installation
 
@@ -33,7 +33,7 @@ function onDeviceReady() {
   }
 
   window.cache.clear(success, error);
-  window.cache.cleartemp();
+  window.cache.cleartemp(success, error);
 }
 
 ```
