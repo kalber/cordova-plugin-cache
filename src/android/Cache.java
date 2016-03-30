@@ -87,7 +87,7 @@ public class Cache extends CordovaPlugin {
 						self.webView.clearCache(true);
 
 						// clear the data
-						Cache.deleteDir(this.cordova.getActivity().getCacheDir());
+						Cache.deleteDir(self.cordova.getActivity().getCacheDir());
 
 						// send success result to cordova
 						PluginResult result = new PluginResult(PluginResult.Status.OK);
